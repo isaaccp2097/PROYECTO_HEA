@@ -17,7 +17,7 @@
        <?php if (isset($_SESSION["user"])&&($_SESSION["user"])=='administrador' ) {
                  include("../funciones/admin/cabecera_admin.php");
                } else {
-                 include("../funciones/usuarios/cabecera.php");
+                 include("../funciones/usuario/cabecera.php");
              }
        ?>
       <div class="row">
@@ -84,7 +84,7 @@
                 $_SESSION["tipo"]=$tipo;
 
                 if ($tipo=='administrador') {
-                  header("Location: ../admin/inicio.php");
+                  header("Location: inicio.php");
                 }
                 else {
                     header("Location: inicio.php");

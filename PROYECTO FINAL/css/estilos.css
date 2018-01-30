@@ -7,9 +7,7 @@
 body{
   background-image: url(../img/fondo.jpg)
 }
-#encabezado{
-  margin-top: 2%;
-}
+
 #inicio{
   border: #7821a9 2px solid;
   background-color: #4e7fcf;
@@ -34,9 +32,7 @@ body{
   align-items: center;
   margin-left: 7%;
 }
-#login{
-  margin-top: 5%;
-}
+
 #menu{
   height: 70px;
 }

@@ -44,19 +44,19 @@
 
 <div class="row" id="menu">
  <div class="col-md-3" id="inicio">
-       <a href="mapa.php"><button type="button" id="item" class="navbar-toggler">Editar Usuarios
+       <a href="admin_mapa.php"><button type="button" id="item" class="navbar-toggler">Editar Usuarios
        </button></a>
  </div>
  <div class="col-md-3" id="inicio">
-       <a href="lugares.php"><button type="button" id="item" class="navbar-toggler">Editar lugares de usuarios
+       <a href="admin_lugares.php"><button type="button" id="item" class="navbar-toggler">Editar lugares de usuarios
        </button></a>
  </div>
  <div class="col-md-3" id="inicio">
-       <a href="missitios.php"><button type="button" id="item" class="navbar-toggler">Mis sitios
+       <a href="admin_missitios.php"><button type="button" id="item" class="navbar-toggler">Sitios admin
        </button></a>
  </div>
  <div class="col-md-3" id="inicio">
-       <a href="contactanos.php"><button type="button" id="item" class="navbar-toggler">Edita Contactanos
+       <a href="admin_contactanos.php"><button type="button" id="item" class="navbar-toggler">Edita Contactanos
        </button></a>
  </div>
 </div>
