@@ -1,0 +1,42 @@
+#logo{
+  background-color: black;
+  color: white;
+  border: #7821a9 2px solid;
+}
+
+body{
+  background-image: url(../img/fondo.jpg)
+}
+#encabezado{
+  margin-top: 2%;
+}
+#inicio{
+  border: #7821a9 2px solid;
+  background-color: #4e7fcf;
+  text-align: center;
+}
+#item{
+  margin-top: 6%;
+}
+
+#nusu{
+  color: white;
+  margin-top: 12%;
+}
+#boton{
+  margin-top: 20%;
+}
+#portada{
+  width: 100%;
+  margin-left: -7%;
+}
+#divportada{
+  align-items: center;
+  margin-left: 7%;
+}
+#login{
+  margin-top: 5%;
+}
+#menu{
+  height: 70px;
+}
