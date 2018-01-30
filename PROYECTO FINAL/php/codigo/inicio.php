@@ -12,12 +12,12 @@
   <body>
      <div class="container-fluid">
       <?php if (isset($_SESSION["user"])&&($_SESSION["user"])=='administrador' ) {
-                include("../funciones/cabecera_admin.php");
+                include("../funciones/admin/cabecera_admin.php");
               } else {
-                include("../funciones/cabecera.php");
+                include("../funciones/usuarios/cabecera.php");
             }
       ?>
-    <?php //include("../funciones/cabecera.php"); ?>
+
       <div class="row">
         <div class="col-md-12" id="divportada" class="ml-5" >
           <img id="portada" src="../../img/portada.png" class="img-fluid" alt="Responsive image" >

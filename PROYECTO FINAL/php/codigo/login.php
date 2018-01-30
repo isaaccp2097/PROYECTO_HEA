@@ -15,14 +15,14 @@
   <body>
      <div class="container-fluid">
        <?php if (isset($_SESSION["user"])&&($_SESSION["user"])=='administrador' ) {
-                 include("../funciones/cabecera_admin.php");
+                 include("../funciones/admin/cabecera_admin.php");
                } else {
-                 include("../funciones/cabecera.php");
+                 include("../funciones/usuarios/cabecera.php");
              }
        ?>
       <div class="row">
         <div class="col-md-3">
-        </div>
+      </div>
         <div class="col-md-6">
           <form action="login.php" method="post">
             <div class="form-group">
@@ -84,7 +84,7 @@
                 $_SESSION["tipo"]=$tipo;
 
                 if ($tipo=='administrador') {
-                  header("Location: ../admin/admin.php");
+                  header("Location: ../admin/inicio.php");
                 }
                 else {
                     header("Location: inicio.php");

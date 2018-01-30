@@ -1,4 +1,4 @@
-<?php
+ <?php
   session_start();
 ?>
 <!DOCTYPE html>
@@ -15,9 +15,9 @@
   <body>
      <div class="container-fluid">
        <?php if (isset($_SESSION["user"])&&($_SESSION["user"])=='administrador' ) {
-                 include("../funciones/cabecera_admin.php");
+                 include("../funciones/admin/cabecera_admin.php");
                } else {
-                 include("../funciones/cabecera.php");
+                 include("../funciones/usuarios/cabecera.php");
              }
        ?>
        <div class="row">
