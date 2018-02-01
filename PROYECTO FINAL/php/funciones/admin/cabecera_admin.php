@@ -1,4 +1,4 @@
-<div class="row" id="encabezado">
+<!--<div class="row" id="encabezado">
  <div class="col-md-4" id="logo">
      <a href="inicio.php"><img src="../../img/prueba1.png" class="img-fluid" alt="Responsive image"></a>
  </div>
@@ -59,4 +59,44 @@
        <a href="admin_contactanos.php"><button type="button" id="item" class="navbar-toggler">Edita Contactanos
        </button></a>
  </div>
+</div>-->
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+  <a class="navbar-brand" href="inicio.php">
+    <img src="../../img/prueba1.png" width="200" height="75" class="d-inline-block align-top img-rounded" alt="">
+    <a class="navbar-brand " href="login.php">Log in</a>
+    <a class="navbar-brand" href="registro.php">Sing in</a>
+    </a>
+</nav>
+<div class="pos-f-t">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+      <h4 class="text-white">CONTENIDO</h4>
+      <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand " href="mapa.php">Mapa</a>
+        <a class="navbar-brand " href="lugares.php">Lugares</a>
+        <a class="navbar-brand " href="mis_sitios.php">Mis Sitios</a>
+        <a class="navbar-brand " href="contactanos.php">Contactanos</a>
+      </nav>
+    </div>
+    
+  </div>
+  <nav class="navbar navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
 </div>
