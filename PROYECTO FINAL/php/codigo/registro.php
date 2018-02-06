@@ -28,24 +28,24 @@
          <div class="form-group">
            <label>Nombre de usuario: </label>
            <input name="nusu" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Introduce nombre usuario">
-           <small class="form-text text-muted">Debe ser único, en caso de estar repetido se repetira el formulario</small>
+           <small class="form-text ">Debe ser único, en caso de estar repetido se repetira el formulario</small>
          </div>
          <div class="form-group">
            <label>Nombre: </label>
            <input name="nombre" type="text" class="form-control" placeholder="Nombre">
            <label>Apellidos: </label>
            <input name="apellidos" type="text" class="form-control" placeholder="Apellidos">
-           <small class="form-text text-muted">Introduce tu nombre y apellidos propios reales</small>
+           <small class="form-text  ">Introduce tu nombre y apellidos propios reales</small>
          </div>
          <div class="form-group">
            <label>Dirección de correo: </label>
            <input name="email" type="email" class="form-control" placeholder="Email">
-           <small class="form-text text-muted">Introduce tu email</small>
+           <small class="form-text ">Introduce tu email</small>
          </div>
          <div class="form-group">
            <label>Fecha de nacimiento: </label>
            <input name="fecha" type="date" class="form-control" placeholder="Edad">
-           <small class="form-text text-muted">Introduce tu Fecha de nacimiento</small>
+           <small class="form-text ">Introduce tu Fecha de nacimiento</small>
          </div>
          <div class="form-group">
            <label>Contraseña: </label>

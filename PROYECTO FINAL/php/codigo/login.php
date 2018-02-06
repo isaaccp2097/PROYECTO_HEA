@@ -22,7 +22,7 @@
        ?>
       <div class="row">
         <div class="col-md-3">
-      </div>
+        </div>
         <div class="col-md-6">
           <form action="login.php" method="post">
             <div class="form-group">
@@ -87,7 +87,7 @@
                   header("Location: inicio.php");
                 }
                 else {
-                    header("Location: inicio.php");
+                  header("Location: inicio.php");
                 }
 
               }

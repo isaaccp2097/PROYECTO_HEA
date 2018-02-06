@@ -22,7 +22,7 @@
       <div class="row">
         <div class="col-md-6 offset-md-3 mt-2" >
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand">Buscar sitio...</a>
+            <a class="navbar-brand text-muted">Buscar sitio...</a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <form action="lugares.php" class="form-inline my-2 my-lg-0" method="post">
                 <input class="form-control mr-sm-4" type="search" placeholder="Search" aria-label="Search" name="lugar">
@@ -59,11 +59,12 @@
                   $lugar=$obj->ciudad;
                   $foto=$obj->foto;
                   $des=$obj->descripcion;
+                  $cod_lugar=$obj->cod_sitio;
                   echo "<div class='row mt-1'>";
                   echo "<div class='col-md-3'>";
                   echo "</div>";
                   echo "<div class='col-md-3'>";
-                  echo "<h2>$lugar</h2><br>";
+                  echo "<a href='lugar.php?lugar=$cod_lugar'><h2>$lugar</h2></a><br>";
                   echo "$des";
                   echo "</div>";
                   echo "<div class='col-md-3'>";
