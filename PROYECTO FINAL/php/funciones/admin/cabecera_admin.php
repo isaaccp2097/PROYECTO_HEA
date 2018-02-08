@@ -5,10 +5,18 @@
     <a class="navbar-brand" href="registro.php">Sing in</a>
     <?php
     if (isset($_SESSION["user"])) {
-    echo "<h4 style='margin-left: 50%; color: white;'>Estas logueado como: $_SESSION[user]</h4>";
-  } else {
-    echo "<h4 id='nusu'>No ha iniciado sesion</h4>";
-  }
+      echo "<h4 id='nusu'>Estas logueado como: $_SESSION[user]</h4>";
+      echo "<a class='navbar-brand' href='login.php'>Log out</a>";
+
+    } else {
+      echo "<h4 id='nusu'>No ha iniciado sesion</h4>";
+      echo "<a class='navbar-brand' href='login.php'>Log in</a>";
+      echo "<a class='navbar-brand' href='registro.php'>Sing in</a>";
+    }
+    ?>
+
+
+
   ?>
     </a>
 </nav>

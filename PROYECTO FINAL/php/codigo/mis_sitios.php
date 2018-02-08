@@ -44,20 +44,55 @@
 
       ?>
 
-      <div class="row">
-        <div class="col-md-6 offset-md-3 mt-2" >
-          <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand text-muted">Buscar  mis sitios...</a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <form action="lugares.php" class="form-inline my-2 my-lg-0" method="post">
-                <input class="form-control mr-sm-4" type="search" placeholder="Search" aria-label="Search" name="lugar">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-              </form>
-            </div>
-          </nav>
-        </div>
-      </div>
-      
+      <?php
+
+
+
+          if (isset($_SESSION["user"])) {
+
+
+            $connection = new mysqli("localhost", "root", "Admin2015", "hea", 3316);
+
+
+            if ($connection->connect_errno) {
+                printf("Connection failed: %s\n", $connection->connect_error);
+                exit();
+            }
+            $u=$_SESSION["user"];
+            $consulta="select * from sitios s join fotos f on s.cod_sitio=f.cod_sitio
+            join valoracion v on f.cod_foto=v.cod_foto
+            join usuarios usu on v.cod_usu=usu.cod_usu
+            where usu.cod_usu=(select usu.cod_usu from usuarios usu
+            where usu.nusu='$u');";
+            if ($result = $connection->query($consulta)) {
+
+              if ($result->num_rows===0) {
+                echo "Ninun sitio con esa correspondencia<br>";
+                echo "$consulta";
+              } else {
+                echo "<div class='row'>";
+                while($obj = $result->fetch_object()) {
+
+                $lugar=$obj->ciudad;
+                $foto=$obj->foto;
+                $cod_lugar=$obj->cod_sitio;
+
+                        echo "<div class='mt-3 col-md-4'>
+                        <img class='w-100 img-thumbnail 'src='$foto'>
+                        </div>";
+
+
+
+              }
+              echo "</div>";
+              }
+            }
+        }
+
+
+      ?>
+
+
     </div>
   </body>
 </html>
