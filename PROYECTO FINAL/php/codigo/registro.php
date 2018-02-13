@@ -84,7 +84,7 @@
            values
            ('$nusu',md5('$contrasena'),'$nombre','$apellidos','$email','$fecha','usuario')";
            if ($result = $connection->query($consulta)) {
-             //header("Location: inicio.php");
+             header("Location: inicio.php");
            }
 
 

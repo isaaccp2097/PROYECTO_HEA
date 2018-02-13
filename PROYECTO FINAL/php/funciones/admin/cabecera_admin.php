@@ -1,8 +1,6 @@
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
   <a class="navbar-brand" href="inicio.php">
     <img src="../../img/prueba1.png" width="200" height="75" class="d-inline-block align-top img-rounded" alt="">
-    <a class="navbar-brand " href="login.php">Log in</a>
-    <a class="navbar-brand" href="registro.php">Sing in</a>
     <?php
     if (isset($_SESSION["user"])) {
       echo "<h4 id='nusu'>Estas logueado como: $_SESSION[user]</h4>";
@@ -17,7 +15,6 @@
 
 
 
-  ?>
     </a>
 </nav>
 <div class="pos-f-t">

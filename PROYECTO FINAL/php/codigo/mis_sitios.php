@@ -43,7 +43,23 @@
             }
 
       ?>
+      <div class="row mt-1">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-2">
+          <h2>Añadir sitio</h2>
+        </div>
+        <div class="col-md-2">
+          <form action="mis_sitios.php" method="post">
+            <div class="form-group">
+              <a href="sitio.php"><button type="button" class="btn btn-default">AÑADIR</button></a>
+        </div>
+        <div class="col-md-4">
+        </div>
 
+      </div>
+    
+      <!-- todos los sitios del usuario-->
       <?php
 
 
