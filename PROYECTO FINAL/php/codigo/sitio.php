@@ -79,7 +79,7 @@
           $codsitio=$connection->insert_id;
           $c2="insert into fotos (cod_foto, cod_sitio, foto)
           values
-          (NULL,'$codsitio','$foto')";
+          (NULL,'$codsitio','../../img/usuario/sitios/$foto')";
           if ($result = $connection->query($c2)) {
             header("Location: mis_sitios.php");
           }

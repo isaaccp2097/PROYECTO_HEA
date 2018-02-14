@@ -17,7 +17,7 @@
      <div class="container-fluid">
       <?php if (isset($_SESSION["user"])&&($_SESSION["user"])=='administrador' ) {
                 include("../funciones/admin/cabecera_admin.php");
-              } else if (isset($_SESSION["user"])) {
+              } else if(isset($_SESSION["user"])) {
                 include("../funciones/usuario/cabecera.php");
               }else{
                 include("../funciones/usuario/cabecera.php");
@@ -43,29 +43,14 @@
             }
 
       ?>
-      <div class="row mt-1">
-        <div class="col-md-4">
-        </div>
-        <div class="col-md-2">
-          <h2>Añadir sitio</h2>
-        </div>
-        <div class="col-md-2">
-          <form action="mis_sitios.php" method="post">
-            <div class="form-group">
-              <a href="sitio.php"><button type="button" class="btn btn-default">AÑADIR</button></a>
-        </div>
-        <div class="col-md-4">
-        </div>
 
-      </div>
-    </div>
 
       <!-- todos los sitios del usuario-->
       <?php
 
 
 
-          if (isset($_SESSION["user"])) {
+          if (isset($_GET["foto"])) {
 
 
             $connection = new mysqli("localhost", "root", "Admin2015", "hea", 3316);
@@ -76,30 +61,10 @@
                 exit();
             }
             $codusu=$_SESSION["codusu"];
-            $consulta="select s.ciudad, f.foto, s.cod_sitio from usuarios u join sitios s on u.cod_usu=s.cod_usu
-            join fotos f on s.cod_sitio=f.cod_sitio where u.cod_usu=$codusu";
-            if ($result = $connection->query($consulta)) {
-
-              if ($result->num_rows===0) {
-                echo "No tienes ningún sitio, pero puedes agregar uni sitio pulsando en el botón de AÑADIR";
-              } else {
-                echo "<div class='row'>";
-                while($obj = $result->fetch_object()) {
-
-                $lugar=$obj->ciudad;
-                $foto=$obj->foto;
-                $cod_lugar=$obj->cod_sitio;
-
-                        echo "<div class='mt-3 col-md-4'>
-                        <img class='w-100 responsive img-thumbnail' src='$foto'><a href='borrar_sitio.php?cod_lugar=$cod_lugar&foto=$foto'><img src='../../img/administrador/borrar.png'></a>
-                        $lugar
-                        </div>";
-
-
-
-              }
-              echo "</div>";
-              }
+            $lugar=$_GET['cod_lugar'];
+            $c1="delete from sitios where cod_sitio=$lugar";
+            if ($result = $connection->query($c1)) {
+              header("Location: mis_sitios.php");
             }
         }
 
