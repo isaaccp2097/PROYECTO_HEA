@@ -91,7 +91,7 @@
                 $cod_lugar=$obj->cod_sitio;
 
                         echo "<div class='mt-3 col-md-4'>
-                        <img class='w-100 responsive img-thumbnail' src='$foto'><a href='borrar_sitio.php?cod_lugar=$cod_lugar&foto=$foto'><img src='../../img/administrador/borrar.png'></a>
+                        <a href='edita_sitio.php'><img class='w-100 responsive img-thumbnail' src='$foto'></a><a href='borrar_sitio.php?cod_lugar=$cod_lugar&foto=$foto'><img src='../../img/administrador/borrar.png'></a>
                         $lugar
                         </div>";
 
