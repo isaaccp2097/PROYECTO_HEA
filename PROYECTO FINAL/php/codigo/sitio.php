@@ -24,10 +24,10 @@
         <div class="col-md-3">
         </div>
         <div class="col-md-6">
-      <form  method="post">
+      <form  action="sitio.php" method="post">
         <div class="form-group">
           <label>Ciudad: </label>
-          <input name="ciudad" type="text" class="form-control">
+          <input name="ciudad" type="text" class="form-control" required>
           <label>Pais: </label>
           <input name="pais" type="text" class="form-control">
           <label>Provincia: </label>
@@ -49,7 +49,7 @@
 
     <?php
 
-        if (isset($_POST["nusu"])) {
+        if (isset($_POST["ciudad"])) {
 
 
           $connection = new mysqli("localhost", "root", "Admin2015", "hea", 3316);
@@ -60,7 +60,7 @@
               exit();
           }
 
-          $nusu=$_POST['nusu'];
+
           $ciudad=$_POST['ciudad'];
           $pais=$_POST['pais'];
           $provincia=$_POST['provincia'];
@@ -73,16 +73,16 @@
           $c1="insert into sitios (cod_usu,ciudad,pais,provincia,latitud,longitud,descripcion)
           values
           ('$cod_usu','$ciudad','$pais','$provincia','$latitud','$longitud','$descripcion')";
-          if ($result = $connection->query($consulta)) {
-            header("Location: inicio.php");
+          if ($result = $connection->query($c1)) {
+
           }
-          /*$codsitio=$connection->insert_id;
+          $codsitio=$connection->insert_id;
           $c2="insert into fotos (cod_foto, cod_sitio, foto)
           values
           (NULL,'$codsitio','$foto')";
-          if ($result = $connection->query($consulta)) {
-            echo "$c2";
-          }*/
+          if ($result = $connection->query($c2)) {
+            header("Location: mis_sitios.php");
+          }
 
       }
     ?>

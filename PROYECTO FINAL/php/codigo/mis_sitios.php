@@ -58,7 +58,8 @@
         </div>
 
       </div>
-    
+    </div>
+
       <!-- todos los sitios del usuario-->
       <?php
 
@@ -74,17 +75,13 @@
                 printf("Connection failed: %s\n", $connection->connect_error);
                 exit();
             }
-            $u=$_SESSION["user"];
-            $consulta="select * from sitios s join fotos f on s.cod_sitio=f.cod_sitio
-            join valoracion v on f.cod_foto=v.cod_foto
-            join usuarios usu on v.cod_usu=usu.cod_usu
-            where usu.cod_usu=(select usu.cod_usu from usuarios usu
-            where usu.nusu='$u');";
+            $codusu=$_SESSION["codusu"];
+            $consulta="select s.ciudad, f.foto, s.cod_sitio from usuarios u join sitios s on u.cod_usu=s.cod_usu
+            join fotos f on s.cod_sitio=f.cod_sitio where u.cod_usu=$codusu";
             if ($result = $connection->query($consulta)) {
 
               if ($result->num_rows===0) {
-                echo "Ninun sitio con esa correspondencia<br>";
-                echo "$consulta";
+                echo "No tienes ningún sitio, pero puedes agregar uni sitio pulsando en el botón de AÑADIR";
               } else {
                 echo "<div class='row'>";
                 while($obj = $result->fetch_object()) {
@@ -95,6 +92,7 @@
 
                         echo "<div class='mt-3 col-md-4'>
                         <img class='w-100 img-thumbnail 'src='$foto'>
+                        $lugar
                         </div>";
 
 
