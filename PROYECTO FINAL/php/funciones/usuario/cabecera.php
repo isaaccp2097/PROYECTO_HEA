@@ -6,7 +6,7 @@
     <?php
     if (isset($_SESSION["user"])) {
       echo "<h4 id='nusu'>Estas logueado como: $_SESSION[user]</h4>";
-      echo "<a class='navbar-brand' href='login.php'>Log out</a>";
+      echo "<a class='navbar-brand' href='../../php/codigo/logout.php'>Log out</a>";
 
     } else {
       echo "<h4 id='nusu'>No ha iniciado sesion</h4>";

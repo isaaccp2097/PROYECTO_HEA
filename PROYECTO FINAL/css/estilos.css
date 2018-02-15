@@ -6,7 +6,7 @@
 
 body{
   background-image: url(../img/fondo.png);
-  color: white; 
+  color: white;
 }
 
 #inicio{
@@ -36,4 +36,11 @@ body{
 
 #menu{
   height: 70px;
+}
+#error{
+  color: red;
+}
+#boton_accion{
+  height: 30px;
+  width: 30px;
 }

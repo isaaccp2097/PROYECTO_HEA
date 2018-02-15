@@ -52,7 +52,7 @@
         <div class="col-md-2">
           <form action="mis_sitios.php" method="post">
             <div class="form-group">
-              <a href="sitio.php"><button type="button" class="btn btn-default">AÑADIR</button></a>
+              <a href="sitio.php"><img id="boton_accion" src='../../img/administrador/anadir.png'></a>
         </div>
         <div class="col-md-4">
         </div>
@@ -91,7 +91,7 @@
                 $cod_lugar=$obj->cod_sitio;
 
                         echo "<div class='mt-3 col-md-4'>
-                        <a href='edita_sitio.php'><img class='w-100 responsive img-thumbnail' src='$foto'></a><a href='borrar_sitio.php?cod_lugar=$cod_lugar&foto=$foto'><img src='../../img/administrador/borrar.png'></a>
+                        <a href='edita_sitio.php'><img class='w-100 h-50 responsive img-thumbnail' src='$foto'></a><a href='borrar_sitio.php?cod_lugar=$cod_lugar&foto=$foto'><img id='boton_accion' src='../../img/administrador/borrar.svg'></a>
                         $lugar
                         </div>";
 

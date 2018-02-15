@@ -20,6 +20,79 @@
                 include("../funciones/usuario/cabecera.php");
             }
       ?>
-      
+
+      <?php
+
+        //CREATING THE CONNECTION
+        $connection = new mysqli("localhost", "root", "Admin2015", "hea",3316);
+        $connection->set_charset("uft8");
+
+        //TESTING IF THE CONNECTION WAS RIGHT
+        if ($connection->connect_errno) {
+            printf("Connection failed: %s\n", $connection->connect_error);
+            exit();
+        }
+
+        //MAKING A SELECT QUERY
+        /* Consultas de selección que devuelven un conjunto de resultados */
+          $query="SELECT * from usuarios";
+        if ($result = $connection->query($query)) {
+
+            printf("<p>Numero de usuarios registrados: %d.</p>", $result->num_rows);
+
+        ?>
+
+            <!-- Tabla usuarios -->
+            <table class="table table-dark">
+              <thead>
+                <tr>
+                  <th scope="col">Nombre usuario</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Apellidos</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Fecha Nacimiento</th>
+                  <th scope="col">Tipo</th>
+                </tr>
+              </thead>
+
+
+
+
+
+
+        <?php
+
+            //FETCHING OBJECTS FROM THE RESULT SET
+            //THE LOOP CONTINUES WHILE WE HAVE ANY OBJECT (Query Row) LEFT
+            while($obj = $result->fetch_object()) {
+                //PRINTING EACH ROW
+                echo "<tbody>
+                        <tr>
+                        <th scope='row'>$obj->nusu</th>
+                        <td>$obj->nombre</td>
+                        <td>$obj->apellidos</td>
+                        <td>$obj->email</td>
+                        <td>$obj->fecha</td>
+                        <td>$obj->tipo</td>
+                        <td><a href='mod_usu.php?nusu=$obj->nusu'><img src='../../img/administrador/editar.jpg' id='boton_accion' ></a></td>
+                        <td><a href='borrar_usu.php?nusu=$obj->nusu'><img src='../../img/administrador/borrar.svg' id='boton_accion'></a></td>
+
+
+                      </tr>
+                      ";
+            }
+            echo "</tbody>";
+            //Free the result. Avoid High Memory Usages
+            $result->close();
+            unset($obj);
+            unset($connection);
+
+        } //END OF THE IF CHECKING IF THE QUERY WAS RIGHT
+
+      ?>
+        </table>
+
+
+
  </body>
 </html>
