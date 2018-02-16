@@ -1,4 +1,3 @@
-
 <?php
   session_start();
 ?>
@@ -40,6 +39,7 @@
             $codusu=$_SESSION["codusu"];
             $nusu=$_GET['nusu'];
             $c1="delete from usuarios where nusu='$nusu'";
+            echo "$c1";
             if ($result = $connection->query($c1)) {
               header("Location: edita_usuarios.php");
             }

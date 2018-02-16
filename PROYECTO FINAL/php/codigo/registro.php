@@ -80,11 +80,11 @@
            $email=$_POST['email'];
            $fecha=$_POST['fecha'];
 
-           $consulta="insert into usuarios (nusu,contrasena,nombre,apellidos,email,fecha,tipo)
+           $consulta="insert into usuarios (nusu,cod_usu,contrasena,nombre,apellidos,email,fecha,tipo)
            values
-           ('$nusu',md5('$contrasena'),'$nombre','$apellidos','$email','$fecha','usuario')";
+           ('$nusu',NULL,md5('$contrasena'),'$nombre','$apellidos','$email','$fecha','usuario')";
            if ($result = $connection->query($consulta)) {
-             header("Location: login.php");
+               
            } else {
              echo "<div id='error'>El campo 'Nombre de usuario' está repetido</div>";
            }
