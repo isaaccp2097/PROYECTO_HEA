@@ -12,6 +12,11 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/estilos.css" media="screen" title="no title">
+    <style media="screen">
+      #boton_accion{
+        height: 30px;
+      }
+    </style>
 </head>
   <body>
      <div class="container-fluid">
@@ -91,7 +96,7 @@
                 $cod_lugar=$obj->cod_sitio;
 
                         echo "<div class='mt-3 col-md-4'>
-                        <a href='edita_sitio.php'><img class='w-100 h-50 responsive img-thumbnail' src='$foto'></a><a href='borrar_sitio.php?cod_lugar=$cod_lugar&foto=$foto'><img id='boton_accion' src='../../img/administrador/borrar.svg'></a>
+                        <a href='edita_sitio.php'><img class='w-100 h-70 responsive img-thumbnail' src='$foto'></a><a href='borrar_sitio.php?cod_lugar=$cod_lugar&foto=$foto'><img id='boton_accion' src='../../img/administrador/borrar.svg'></a>
                         $lugar
                         </div>";
 

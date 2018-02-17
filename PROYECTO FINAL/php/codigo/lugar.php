@@ -11,6 +11,11 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/estilos.css" media="screen" title="no title">
+    <style media="screen">
+      #color_negro{
+        color: black;
+      }
+    </style>
 </head>
   <body>
      <div class="container-fluid">
@@ -79,6 +84,24 @@
 
 
       ?>
+      <h1 class='text-center' id="color_negro"> COMENTARIOS </h1>
+      <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+          <form class="" method="post">
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Escribe aquí tu comentario</label>
+              <textarea name="comentario" required class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <input type="hidden" name="lugar" value="">
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar comentario</button>
+          </form>
+        </div>
+        <div class="col-md-3">
+        </div>
+      </div>
+
 
 
       <?php
@@ -96,15 +119,14 @@
                 exit();
             }
             $lug=$_GET['lugar'];
-            $consulta="select * from comentarios c join sitios s on s.cod_sitio=c.cod_sitio where s.cod_sitio='$lug' ";
+            $consulta="select * from comentarios c join sitios s on s.cod_sitio=c.cod_sitio where s.cod_sitio='$lug'";
             if ($result = $connection->query($consulta)) {
-
+        
               if ($result->num_rows===0) {
                 echo "<div class='row'>";
                 echo "<div class='col-md-3'>";
                 echo "</div>";
-                echo "<div class='col-md-6'>";
-                echo "<h1 class='text-center'> COMENTARIOS </h1>";
+                echo "<div class='col-md-6 mt-5 ' id='color_negro'>";
                 echo "Ninun Comentario";
                 echo "</div>";
                 echo "<div class='col-md-3'>";
@@ -113,18 +135,47 @@
               } else {
                   while($obj = $result->fetch_object()) {
                 $com=$obj->comentario;
+                $nu=$obj->nusu;
                 echo "<div class='row'>";
                 echo "<div class='col-md-3'>";
                 echo "</div>";
                 echo "<div class='col-md-6'>";
-                echo "<h1 class='text-center'> COMENTARIOS </h1>";
-                echo "<div class='alert alert-info'>$com</div>";
+
+                echo "<div class='mt-5 alert alert-info'>$com</div>";
                 echo "</div>";
                 echo "<div class='col-md-3'>";
                 echo "</div>";
                 echo "</div>";
               }
             }
+            }
+        }
+
+
+      ?>
+      <?php
+
+
+
+          if (isset($_POST["comentario"])) {
+
+
+            $connection = new mysqli("localhost", "root", "Admin2015", "hea", 3316);
+
+
+            if ($connection->connect_errno) {
+                printf("Connection failed: %s\n", $connection->connect_error);
+                exit();
+            }
+            $lug=$_GET['lugar'];
+            $com=$_POST['comentario'];
+            $u=$_SESSION["user"];
+            $cu=$_SESSION["codusu"];
+            $consulta="insert into comentarios (cod_comentario,comentario,cod_usu,cod_sitio)
+            values (NULL,'$u dice: $com','$cu','$lug')";
+            if ($result = $connection->query($consulta)) {
+              header("Location: lugar.php?lugar=$lug");
+
             }
         }
 
