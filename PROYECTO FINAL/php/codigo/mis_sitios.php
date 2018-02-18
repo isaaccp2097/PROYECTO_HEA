@@ -16,6 +16,10 @@
       #boton_accion{
         height: 30px;
       }
+      #fotos{
+        height: 300px;
+
+      }
     </style>
 </head>
   <body>
@@ -96,7 +100,7 @@
                 $cod_lugar=$obj->cod_sitio;
 
                         echo "<div class='mt-3 col-md-4'>
-                        <a href='edita_sitio.php'><img class='w-100 h-70 responsive img-thumbnail' src='$foto'></a><a href='borrar_sitio.php?cod_lugar=$cod_lugar&foto=$foto'><img id='boton_accion' src='../../img/administrador/borrar.svg'></a>
+                        <a href='edita_sitio.php?cod_lugar=$cod_lugar'><img id='fotos' class='img-thumbnail' src='$foto'></a><a href='borrar_sitio.php?cod_lugar=$cod_lugar&foto=$foto'><img id='boton_accion' src='../../img/administrador/borrar.svg'></a>
                         $lugar
                         </div>";
 

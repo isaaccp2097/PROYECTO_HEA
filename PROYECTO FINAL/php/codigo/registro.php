@@ -11,6 +11,11 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/estilos.css" media="screen" title="no title">
+    <style media="screen">
+      #negro{
+        color: black;
+      }
+    </style>
 </head>
   <body>
      <div class="container-fluid">
@@ -53,7 +58,7 @@
          </div>
          <div class="form-check">
            <input type="checkbox" class="form-check-input">
-           <label class="form-check-label">Confirmo que creo una cuenta y me hago responsable de ella</label><br> <br>
+           <label id="negro" class="form-check-label">Confirmo que creo una cuenta y me hago responsable de ella</label><br> <br>
          </div>
          <button type="submit" class="btn btn-primary">Submit</button>
        </form>

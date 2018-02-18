@@ -26,7 +26,7 @@
 
 
 
-          if (isset($_GET["lugar"])) {
+          if (isset($_GET["cod_lugar"])) {
 
 
             $connection = new mysqli("localhost", "root", "Admin2015", "hea", 3316);
@@ -36,7 +36,7 @@
                 printf("Connection failed: %s\n", $connection->connect_error);
                 exit();
             }
-            $lug=$_GET['lugar'];
+            $lug=$_GET['cod_lugar'];
             $consulta="select * from sitios s join fotos f on s.cod_sitio=f.cod_sitio where s.cod_sitio='$lug' ";
             if ($result = $connection->query($consulta)) {
 
