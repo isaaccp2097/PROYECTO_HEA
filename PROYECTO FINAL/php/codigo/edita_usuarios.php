@@ -44,7 +44,8 @@
           $query="SELECT * from usuarios";
         if ($result = $connection->query($query)) {
 
-            printf("<p>Numero de usuarios registrados: %d.</p>", $result->num_rows);
+            printf("Numero de usuarios registrados: %d.", $result->num_rows);
+            echo "<a href='registro.php'><img id='boton_accion' src='../../img/administrador/anadir.png'></a>";
 
         ?>
 

@@ -20,7 +20,7 @@
                 include("../funciones/usuario/cabecera.php");
             }
       ?>
-<h1 class='text-center' id="color_negro"> COMENTARIO </h1>
+<h1 class='text-center' id="color_negro"> CIUDAD </h1>
 <div class="row">
   <div class="col-md-3">
   </div>
@@ -29,7 +29,7 @@
       <div class="form-group">
 
         <?php
-          if (isset($_GET["com"])) {
+          if (isset($_GET["lugar"])) {
 
         //$cod_usu1 = $_POST["cod_usu"];
 
@@ -45,13 +45,13 @@
 
         //MAKING A SELECT QUERY
         /* Consultas de selección que devuelven un conjunto de resultados */
-        $comentario=$_GET['com'];
-        $query="select * from comentarios where cod_comentario=$comentario";
+        $lug=$_GET['lugar'];
+        $query="select * from sitios where cod_sitio=$lug";
 
 
         if ($result = $connection->query($query)) {
           if($obj = $result->fetch_object()) {
-            $com=$obj->comentario;
+            $tit=$obj->ciudad;
 
         }
       }else {
@@ -59,8 +59,8 @@
         }
         }
         ?>
-        <?php echo "<h1>$com</h1>" ?>
-        <textarea name="comentario1" required class="form-control" id="exampleFormControlTextarea1" rows="5" ></textarea>
+        <?php echo "<h1>$tit</h1>" ?>
+        <textarea name="tit" required class="form-control" id="exampleFormControlTextarea1" rows="5" ></textarea>
         <input type="hidden" name="lugar" value="">
 
 
@@ -74,7 +74,7 @@
   </div>
 </div>
 <?php
-  if (isset($_POST["comentario1"])) {
+  if (isset($_POST["tit"])) {
 
 //$cod_usu1 = $_POST["cod_usu"];
 
@@ -90,13 +90,13 @@ if ($connection->connect_errno) {
 
 //MAKING A SELECT QUERY
 /* Consultas de selección que devuelven un conjunto de resultados */
-$comentario1=$_POST['comentario1'];
-$cod_c=$_GET['com'];
-$query="update comentarios set comentario='$comentario1' where cod_comentario=$cod_c";
+$titu=$_POST['tit'];
+$cod_c=$_GET['lugar'];
+$query="update sitios set ciudad='$titu' where cod_sitio=$cod_c";
 
 
 if ($result = $connection->query($query)) {
-  header("Location: edita_lugares.php");
+  header("Location: mod_lugar.php?lugar=$cod_c");
 } else {
   echo "Error al actualizar los datos";
 }

@@ -61,39 +61,45 @@
         }
 
         ?>
-        <div class="col-md-6">
-      <form method="post">
-        <div class="form-group">
-          <label>Nombre de usuario: </label>
-          <input name="nusu" required type="text" class="form-control" aria-describedby="emailHelp" value='<?php echo $nusu; ?>'>
-          <small class="form-text ">Debe ser único, en caso de estar repetido se repetira el formulario</small>
+        <div class="row">
+          <div class="col-md-3">
+          </div>
+          <div class="col-md-6">
+            <form action="registro.php" method="post">
+              <div class="form-group">
+                <div class="form-group">
+                <label>Nombre de usuario: </label>
+              <input name="nusu" required type="text" class="form-control" aria-describedby="emailHelp" value='<?php echo $nusu; ?>'>
+              <small class="form-text ">Debe ser único, en caso de estar repetido se repetira el formulario</small>
+            </div>
+            <div class="form-group">
+              <label>Nombre: </label>
+              <input name="nombre" type="text" class="form-control" placeholder="Nombre" value='<?php echo $nombre; ?>'>
+              <label>Apellidos: </label>
+              <input name="apellidos" type="text" class="form-control" placeholder="Apellidos" value='<?php echo $apellidos; ?>'>
+            </div>
+            <div class="form-group">
+              <label>Dirección de correo: </label>
+              <input name="email" type="email" class="form-control" placeholder="Email" value='<?php echo $email; ?>'>
+            </div>
+            <div class="form-group">
+              <label>Fecha de nacimiento: </label>
+              <input name="fecha" type="date" class="form-control" placeholder="Edad" value='<?php echo $fecha; ?>'>
+            </div>
+            <div class="form-group">
+              <label>Tipo de usuario: </label>
+              <input name="tipo" type="text" class="form-control" placeholder="tipo" value='<?php echo $tipo; ?>'>
+            </div>
+            <div class="form-group">
+              <input name="cod_usu" type="hidden" class="form-control" placeholder="tipo" value='<?php echo $cod_usu; ?>'>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
         </div>
-        <div class="form-group">
-          <label>Nombre: </label>
-          <input name="nombre" type="text" class="form-control" placeholder="Nombre" value='<?php echo $nombre; ?>'>
-          <label>Apellidos: </label>
-          <input name="apellidos" type="text" class="form-control" placeholder="Apellidos" value='<?php echo $apellidos; ?>'>
-        </div>
-        <div class="form-group">
-          <label>Dirección de correo: </label>
-          <input name="email" type="email" class="form-control" placeholder="Email" value='<?php echo $email; ?>'>
-        </div>
-        <div class="form-group">
-          <label>Fecha de nacimiento: </label>
-          <input name="fecha" type="date" class="form-control" placeholder="Edad" value='<?php echo $fecha; ?>'>
-        </div>
-        <div class="form-group">
-          <label>Tipo de usuario: </label>
-          <input name="tipo" type="text" class="form-control" placeholder="tipo" value='<?php echo $tipo; ?>'>
-        </div>
-        <div class="form-group">
-          <input name="cod_usu" type="hidden" class="form-control" placeholder="tipo" value='<?php echo $cod_usu; ?>'>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+      </div>
+      <div class="col-md-3">
+      </div>
     </div>
-
-
 
         <?php
         if (isset($_POST["nusu"])) {

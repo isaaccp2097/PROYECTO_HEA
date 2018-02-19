@@ -66,10 +66,11 @@
             $codusu=$_SESSION["codusu"];
             $f=$_GET['foto'];
             $nueva_f=$_POST['nueva_f'];
+            $lugar=$_GET['lugar'];
 
-            $c1="update fotos set foto='$nueva_f' WHERE foto=$f";
+            $c1="update fotos set foto='../../img/usuario/sitios/$nueva_f' WHERE foto='$f'";
             if ($result = $connection->query($c1)) {
-              header("Location: mod_lugar.php");
+              header("Location: mod_lugar.php?lugar=$lugar");
             }
         }
 

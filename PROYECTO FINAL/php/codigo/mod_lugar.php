@@ -63,10 +63,10 @@
                 echo "</div>";
                 echo "<div class='col-md-3 alert'>";
                 echo "<img class='w-100 img-thumbnail ' alt='Responsive image' src='$foto'>";
-                echo "<a href='borrar_foto_lugar.php?foto=$foto'><img src='../../img/administrador/borrar.svg' id='boton_accion'></a>";
+                echo "<a href='borrar_foto_lugar.php?foto=$foto&lugar=$cod_lugar'><img src='../../img/administrador/borrar.svg' id='boton_accion'></a>";
                 echo "</div>";
                 echo "<div class='col-md-3 alert'>";
-                echo "<h2 class='text-center'>$lugar</h2>";
+                echo "<a href='mod_tit_lugar.php?lugar=$cod_lugar&titulo=$lugar'><h2 class='text-center'>$lugar</h2></a>";
                 echo "</div>";
                 echo "<div class='col-md-3'>";
                 echo "</div>";
@@ -76,7 +76,7 @@
                 echo "<div class='col-md-3'>";
                 echo "</div>";
                 echo "<div class='col-md-6 alert alert-warning'>";
-                echo "$des";
+                echo "<a href='mod_descrip.php?lugar=$cod_lugar'> $des</a>";
                 echo "</div>";
                 echo "<div class='col-md-3'>";
                 echo "</div>";
@@ -141,9 +141,11 @@
                 echo "<div class='row'>";
                 echo "<div class='col-md-3'>";
                 echo "</div>";
-                echo "<div class='col-md-6'>";
-
+                echo "<div class='col-md-5'>";
                 echo "<div class='mt-5 alert alert-info'><a href='mod_comentario.php?com=$cod'>$com</a></div>";
+                echo "</div>";
+                echo "<div class='col-md-1'>";
+                echo "<div> <a  href='borrar_comentario.php?com=$cod&lugar=$lug'><img class='mt-5' src='../../img/administrador/borrar.svg' id='boton_accion'></a> </div>";
                 echo "</div>";
                 echo "<div class='col-md-3'>";
                 echo "</div>";

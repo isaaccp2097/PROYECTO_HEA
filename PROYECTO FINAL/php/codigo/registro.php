@@ -29,8 +29,8 @@
          <div class="col-md-3">
          </div>
          <div class="col-md-6">
-       <form action="registro.php" method="post">
-         <div class="form-group">
+           <form action="registro.php" method="post">
+             <div class="form-group">
            <label>Nombre de usuario: </label>
            <input name="nusu" required type="text" class="form-control" aria-describedby="emailHelp" placeholder="Introduce nombre usuario">
            <small class="form-text ">Debe ser único, en caso de estar repetido se repetira el formulario</small>
