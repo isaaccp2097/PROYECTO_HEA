@@ -15,6 +15,9 @@
       #color_negro{
         color: black;
       }
+      #boton_accion{
+        height: 30px;
+      }
     </style>
 </head>
   <body>
@@ -60,6 +63,7 @@
                 echo "</div>";
                 echo "<div class='col-md-3 alert'>";
                 echo "<img class='w-100 img-thumbnail ' alt='Responsive image' src='$foto'>";
+                echo "<a href='borrar_foto_lugar.php?foto=$foto'><img src='../../img/administrador/borrar.svg' id='boton_accion'></a>";
                 echo "</div>";
                 echo "<div class='col-md-3 alert'>";
                 echo "<h2 class='text-center'>$lugar</h2>";
@@ -91,7 +95,6 @@
         <div class="col-md-6">
           <form class="" method="post">
             <div class="form-group">
-              <label for="exampleFormControlTextarea1">Escribe aquí tu comentario</label>
               <textarea name="comentario" required class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
               <input type="hidden" name="lugar" value="">
             </div>
@@ -101,7 +104,6 @@
         <div class="col-md-3">
         </div>
       </div>
-
 
 
       <?php
@@ -135,12 +137,13 @@
               } else {
                   while($obj = $result->fetch_object()) {
                 $com=$obj->comentario;
+                $cod=$obj->cod_comentario;
                 echo "<div class='row'>";
                 echo "<div class='col-md-3'>";
                 echo "</div>";
                 echo "<div class='col-md-6'>";
 
-                echo "<div class='mt-5 alert alert-info'>$com</div>";
+                echo "<div class='mt-5 alert alert-info'><a href='mod_comentario.php?com=$cod'>$com</a></div>";
                 echo "</div>";
                 echo "<div class='col-md-3'>";
                 echo "</div>";
@@ -152,6 +155,7 @@
 
 
       ?>
+
       <?php
 
 
@@ -180,6 +184,8 @@
 
 
       ?>
+
+
     </div>
   </body>
 </html>

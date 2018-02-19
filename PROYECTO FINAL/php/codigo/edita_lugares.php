@@ -67,7 +67,7 @@
                 echo "<div class='col-md-3'>";
                 echo "</div>";
                 echo "<div class='col-md-3'>";
-                echo "<a href='lugar.php?lugar=$cod_lugar'><h2>$lugar</h2></a><br>";
+                echo "<a href='mod_lugar.php?lugar=$cod_lugar'><h2>$lugar</h2></a><br>";
                 echo "$des";
                 echo "</div>";
                 echo "<div class='col-md-3'>";
