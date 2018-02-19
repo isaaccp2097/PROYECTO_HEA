@@ -26,7 +26,7 @@
         <a class="navbar-brand " href="mapa.php">Mapa</a>
         <a class="navbar-brand " href="lugares.php">Lugares</a>
         <a class="navbar-brand " href="mis_sitios.php">Mis Sitios</a>
-        <a class="navbar-brand " href="contactanos.php">Contactanos</a>
+        <a class="navbar-brand " href="editar_cuenta.php">Editar cuenta</a>
       </nav>
     </div>
 

@@ -62,10 +62,6 @@
         <?php echo "<h1>$com</h1>" ?>
         <textarea name="comentario1" required class="form-control" id="exampleFormControlTextarea1" rows="5" ></textarea>
         <input type="hidden" name="lugar" value="">
-
-
-
-
       </div>
       <button type="submit" class="btn btn-primary">Enviar comentario</button>
     </form>
@@ -76,7 +72,7 @@
 <?php
   if (isset($_POST["comentario1"])) {
 
-//$cod_usu1 = $_POST["cod_usu"];
+
 
 //CREATING THE CONNECTION
 $connection = new mysqli("localhost", "root", "Admin2015", "hea",3316);
