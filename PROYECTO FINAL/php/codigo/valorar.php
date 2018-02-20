@@ -23,14 +23,25 @@ $cod_foto=$_GET["codfoto"];
 $cod_usu=$_SESSION["codusu"];
 $lug=$_GET["lugar"];
 
-$query="insert into valoracion (nota,cod_usu,cod_foto)
-values ('$nota','$cod_usu','$cod_foto')";
+$consulta="select * from valoracion v where v.cod_foto='$cod_foto' and v.cod_usu='$cod_usu'";
+if ($result = $connection->query($consulta)) {
 
+  if ($result->num_rows===0) {
+    $query="insert into valoracion (nota,cod_usu,cod_foto)
+    values ('$nota','$cod_usu','$cod_foto')";
 
-if ($result = $connection->query($query)) {
-  header("Location: lugar.php?lugar=$lug");
-} else {
-  header("Location: lugar.php?lugar=$lug");
+    if ($result = $connection->query($query)) {
+      header("Location: lugar.php?lugar=$lug");
+    }
+  }
+  else {
+    $query="update valoracion set nota='$nota' where cod_foto=$cod_foto and cod_usu=$cod_usu";
+
+    if ($result = $connection->query($query)) {
+      header("Location: lugar.php?lugar=$lug");
+    }
+    }
+  }
 }
-}
+
 ?>

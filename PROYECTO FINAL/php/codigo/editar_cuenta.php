@@ -88,8 +88,8 @@
               <input name="fecha" type="date" class="form-control" placeholder="Edad" value='<?php echo $fecha; ?>'>
             </div>
             <div class="form-group">
-              <label>Tipo de usuario: </label>
-              <input name="tipo" type="text" class="form-control" placeholder="tipo" value='<?php echo $tipo; ?>'>
+              
+              <input name="tipo" type="hidden" class="form-control" placeholder="tipo" value='<?php echo $tipo; ?>'>
             </div>
             <div class="form-group">
               <input name="cod_usu" type="hidden" class="form-control" placeholder="tipo" value='<?php echo $cod_usu; ?>'>

@@ -29,7 +29,34 @@
             }
 
       ?>
+      <?php
+          if (isset($_GET["lugar"])) {
+            $connection = new mysqli("localhost", "root", "Admin2015", "hea", 3316);
 
+
+            if ($connection->connect_errno) {
+                printf("Connection failed: %s\n", $connection->connect_error);
+                exit();
+            }
+            $lug=$_GET['lugar'];
+            $consulta="select round(avg(nota),1) nota from valoracion v join fotos f
+            on v.cod_foto=f.cod_foto join sitios s on f.cod_sitio=s.cod_sitio where s.cod_sitio='$lug' ";
+            if ($result = $connection->query($consulta)) {
+
+              if ($result->num_rows===0) {
+                echo "Ninun sitio con esa correspondencia";
+              } else {
+                if($obj = $result->fetch_object()) {
+
+                $nota=$obj->nota;
+                $cod_foto=$obj->cod_foto;
+              }
+              }
+            }
+        }
+
+
+      ?>
       <?php
 
 
@@ -52,7 +79,7 @@
                 echo "Ninun sitio con esa correspondencia";
               } else {
                 while($obj = $result->fetch_object()) {
-
+                $cod_foto=$obj->cod_foto;
                 $lugar=$obj->ciudad;
                 $foto=$obj->foto;
                 $des=$obj->descripcion;
@@ -66,7 +93,12 @@
                 echo "<a href='borrar_foto_lugar.php?foto=$foto&lugar=$cod_lugar'><img src='../../img/administrador/borrar.svg' id='boton_accion'></a>";
                 echo "</div>";
                 echo "<div class='col-md-3 alert'>";
-                echo "<a href='mod_tit_lugar.php?lugar=$cod_lugar&titulo=$lugar'><h2 class='text-center'>$lugar</h2></a>";
+                echo "<a href='mod_tit_lugar.php?lugar=$cod_lugar&titulo=$lugar'><h2 class='text-center'>$lugar</h2></a>
+                <h1 class='text-center'>$nota/5.0</h1><h3 class='text-center'>";
+                if (isset($_SESSION["user"])&&($_SESSION["user"])=='administrador' ) {
+                  echo "<a href='eliminar_valoracion.php?cod_foto=$cod_foto&lugar=$cod_lugar'>Elimina las valoraciones</a></h3><br>";
+                }
+
                 echo "</div>";
                 echo "<div class='col-md-3'>";
                 echo "</div>";
