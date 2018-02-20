@@ -14,14 +14,38 @@
 </head>
  <body>
     <div class="container-fluid">
-      <?php   /*if (isset($_SESSION["user"])&&($_SESSION["user"])=='administrador' ): */?>
-        <?php if (isset($_SESSION["user"])&&($_SESSION["tipo"])=='administrador' ) {
-                  include("../funciones/admin/cabecera_admin.php");
-                } else {
-                  include("../funciones/usuario/cabecera.php");
-              }
-        ?>
 
+
+
+        <?php if (isset($_SESSION["user"])&&($_SESSION["user"])=='administrador' ) {
+                  include("../funciones/admin/cabecera_admin.php");
+                } else if (isset($_SESSION["user"])) {
+                  include("../funciones/usuario/cabecera.php");
+                }else{
+                  include("../funciones/usuario/cabecera.php");
+                  echo "<div class='row'>
+                    <div class='col-md-3'>
+                    </div>
+                    <div class='col-md-6'>
+                      <form action='login.php' method='post'>
+                        <div class='form-group'>
+                          <label>Nombre de usuario: </label>
+                          <input name='nusu' type='text' class='form-control' placeholder='Nombre de usuario'>
+                        </div>
+                        <div class='form-group'>
+                          <label>Contraseña: </label>
+                          <input name='contrasena' type='password' class='form-control' placeholder='Contraseña'>
+                        </div><br>
+                        <button type='submit' class='btn btn-primary'>Log in</button>
+                      </form>
+                    </div>
+                    <div class='col-md-3'>
+                    </div>
+                  </div>";
+              }
+
+        ?>
+        <?php if (isset($_SESSION["user"]))  :?>
 
         <?php if (isset($_SESSION["user"])){
 
@@ -88,7 +112,7 @@
               <input name="fecha" type="date" class="form-control" placeholder="Edad" value='<?php echo $fecha; ?>'>
             </div>
             <div class="form-group">
-              
+
               <input name="tipo" type="hidden" class="form-control" placeholder="tipo" value='<?php echo $tipo; ?>'>
             </div>
             <div class="form-group">
@@ -139,7 +163,21 @@
         }
       }
         ?>
-        <?php /*else: */?>
+
+        <?php else: ?>
+          <div class="row">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6">
+              <h1>ES NECESARIO INICIAR SESIÓN PARA CONTINUAR</h1>
+            </div>
+            <div class="col-md-3">
+            </div>
+          </div>
+
+
+
+        <?php endif ?>
 
 
   </body>

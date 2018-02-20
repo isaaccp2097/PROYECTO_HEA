@@ -98,7 +98,7 @@ $query="update sitios set ciudad='$titu' where cod_sitio=$cod_c";
 if ($result = $connection->query($query)) {
   header("Location: mod_lugar.php?lugar=$cod_c");
 } else {
-  echo "Error al actualizar los datos";
+  echo "Error al actualizar La ciudad, no has accedido adecuadamente a la página";
 }
 }
 ?>

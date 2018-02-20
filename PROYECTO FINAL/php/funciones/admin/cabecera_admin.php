@@ -1,3 +1,10 @@
+<?php if (isset($_SESSION["user"])&&($_SESSION["user"])=='administrador' )  :?>
+
+<?php else: ?>
+  <h1>NO TIENES PERMISOS PARA ACCEDER AQUI</h1>
+
+
+<?php endif ?>
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
   <a class="navbar-brand" href="inicio.php">
     <img src="../../img/prueba1.png" width="200" height="75" class="d-inline-block align-top img-rounded" alt="">

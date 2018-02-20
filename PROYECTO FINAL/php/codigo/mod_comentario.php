@@ -13,7 +13,11 @@
     <link rel="stylesheet" href="../../css/estilos.css" media="screen" title="no title">
 </head>
  <body>
+
+
+
     <div class="container-fluid">
+
       <?php if (isset($_SESSION["user"])&&($_SESSION["tipo"])=='administrador' ) {
                 include("../funciones/admin/cabecera_admin.php");
               } else {
@@ -94,7 +98,12 @@ $query="update comentarios set comentario='$comentario1' where cod_comentario=$c
 if ($result = $connection->query($query)) {
   header("Location: edita_lugares.php");
 } else {
-  echo "Error al actualizar los datos";
+  echo "<div class='row'>
+  <div class='col-md-3'></div>
+  <div class='col-md-6'>
+  <h1>Error al enviar el comentario, no has entrado adecuadamente a esta página</h1>
+  </div>
+  <div class='col-md-3'></div>";
 }
 }
 ?>

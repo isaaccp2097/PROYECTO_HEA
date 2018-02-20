@@ -26,6 +26,8 @@ ob_start();
 </head>
   <body>
      <div class="container-fluid">
+
+
       <?php if (isset($_SESSION["user"])&&($_SESSION["user"])=='administrador' ) {
                 include("../funciones/admin/cabecera_admin.php");
               } else if (isset($_SESSION["user"])) {
@@ -54,22 +56,8 @@ ob_start();
             }
 
       ?>
-      <div class="row mt-1">
-        <div class="col-md-4">
-        </div>
-        <div class="col-md-2">
-          <h2>Añadir sitio</h2>
-        </div>
-        <div class="col-md-2">
-          <form action="mis_sitios.php" method="post">
-            <div class="form-group">
-              <a href="sitio.php"><img id="boton_accion" src='../../img/administrador/anadir.png'></a>
-        </div>
-        <div class="col-md-4">
-        </div>
 
-      </div>
-    </div>
+
 
       <!-- todos los sitios del usuario-->
       <?php
@@ -78,7 +66,22 @@ ob_start();
 
           if (isset($_SESSION["user"])) {
 
+            echo "<div class='row mt-1'>
+              <div class='col-md-4'>
+              </div>
+              <div class='col-md-2'>
+                <h2>Añadir sitio</h2>
+              </div>
+              <div class='col-md-2'>
+                <form action='mis_sitios.php' method='post'>
+                  <div class='form-group'>
+                    <a href='sitio.php'><img id='boton_accion' src='../../img/administrador/anadir.png'></a>
+              </div>
+              <div class='col-md-4'>
+              </div>
 
+            </div>
+          </div>";
             $connection = new mysqli("localhost", "root", "Admin2015", "hea", 3316);
 
 

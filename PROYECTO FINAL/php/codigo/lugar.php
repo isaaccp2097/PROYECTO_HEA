@@ -22,6 +22,8 @@ ob_start();
 </head>
   <body>
      <div class="container-fluid">
+
+
       <?php if (isset($_SESSION["user"])&&($_SESSION["user"])=='administrador' ) {
                 include("../funciones/admin/cabecera_admin.php");
               } else{
@@ -65,6 +67,7 @@ ob_start();
 
 
           if (isset($_GET["lugar"])) {
+
 
 
             $connection = new mysqli("localhost", "root", "Admin2015", "hea", 3316);
@@ -123,7 +126,9 @@ ob_start();
               }
             }
         }
-
+        else {
+          echo "<h1>No has accedido bien y no hay ningún sitio";
+        }
 
       ?>
       <h1 class='text-center' id="color_negro"> COMENTARIOS </h1>

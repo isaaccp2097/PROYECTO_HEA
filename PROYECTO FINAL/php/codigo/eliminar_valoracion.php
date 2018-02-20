@@ -1,6 +1,8 @@
 <?php
   session_start();
 ?>
+<?php if (isset($_SESSION["user"])&&($_SESSION["user"])=='administrador' )  :?>
+
 <?php
 
 
@@ -27,3 +29,8 @@
 
 
 ?>
+<?php else: ?>
+  <h1>NO TIENES PERMISOS PARA ACCEDER AQUI</h1>
+
+
+<?php endif ?>

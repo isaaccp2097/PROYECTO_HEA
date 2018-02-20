@@ -14,6 +14,8 @@
 </head>
   <body>
      <div class="container-fluid">
+      <?php if (isset($_SESSION["user"])&&($_SESSION["user"])=='administrador' )  :?>
+
       <?php if (isset($_SESSION["user"])&&($_SESSION["user"])=='administrador' ) {
                 include("../funciones/admin/cabecera_admin.php");
               }
@@ -48,8 +50,12 @@
 
 
       ?>
+      
+      <?php else: ?>
+        <h1>NO TIENES PERMISOS PARA ACCEDER AQUI</h1>
 
 
+      <?php endif ?>
     </div>
   </body>
 </html>
