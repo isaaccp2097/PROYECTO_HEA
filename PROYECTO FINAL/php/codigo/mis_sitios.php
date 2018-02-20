@@ -1,4 +1,6 @@
-
+<?php
+ob_start();
+?>
 <?php
   session_start();
 ?>
@@ -119,3 +121,6 @@
     </div>
   </body>
 </html>
+<?php
+ob_end_flush();
+?>

@@ -22,7 +22,7 @@
       ?>
 
 
-        <?php if (isset($_GET["nusu"])){
+        <?php if (isset($_SESSION["user"])){
 
           //Creacion de la conexion
           $connection = new mysqli("localhost", "root", "Admin2015", "hea",3316);
@@ -35,7 +35,7 @@
           }
 
           //CONSULTA PARA CONSEGUIR DATOS DE LOS USUARIOS
-          $consulta="SELECT * from usuarios where nusu='".$_GET["nusu"]."'";
+          $consulta="SELECT * from usuarios where nusu='".$_SESSION["user"]."'";
 
           if ($result = $connection->query($consulta))  {
 
@@ -128,16 +128,17 @@
         $query="update usuarios set nusu='$nusu1',nombre='$nombre1',
         apellidos='$apellidos1',email='$email1',fecha='$fecha1',tipo='$tipo1'
         WHERE cod_usu=$cod_usu1";
-    
+
 
         if ($result = $connection->query($query)) {
-          header("Location: edita_usuarios.php");
+          $_SESSION["user"]=$_POST["nusu"];
+          header("Location: inicio.php");
         } else {
           echo "Error al actualizar los datos";
         }
       }
         ?>
-
+        <?php /*else: */?>
 
 
   </body>

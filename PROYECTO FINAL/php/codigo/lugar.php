@@ -1,4 +1,7 @@
 <?php
+ob_start();
+?>
+<?php
   session_start();
 ?>
 <!DOCTYPE html>
@@ -28,6 +31,36 @@
       ?>
 
       <?php
+          if (isset($_GET["lugar"])) {
+            $connection = new mysqli("localhost", "root", "Admin2015", "hea", 3316);
+
+
+            if ($connection->connect_errno) {
+                printf("Connection failed: %s\n", $connection->connect_error);
+                exit();
+            }
+            $lug=$_GET['lugar'];
+            $consulta="select round(avg(nota),1) nota from valoracion v join fotos f
+            on v.cod_foto=f.cod_foto join sitios s on f.cod_sitio=s.cod_sitio where s.cod_sitio='$lug' ";
+            if ($result = $connection->query($consulta)) {
+
+              if ($result->num_rows===0) {
+                echo "Ninun sitio con esa correspondencia";
+              } else {
+                if($obj = $result->fetch_object()) {
+
+                $nota=$obj->nota;
+
+              }
+              }
+            }
+        }
+
+
+      ?>
+
+
+      <?php
 
 
 
@@ -52,6 +85,7 @@
 
                 $lugar=$obj->ciudad;
                 $foto=$obj->foto;
+                $cod_foto=$obj->cod_foto;
                 $des=$obj->descripcion;
                 $cod_lugar=$obj->cod_sitio;
                 // Solo foto y ciudad del sitio
@@ -62,7 +96,15 @@
                 echo "<img class='w-100 img-thumbnail ' alt='Responsive image' src='$foto'>";
                 echo "</div>";
                 echo "<div class='col-md-3 alert'>";
-                echo "<h2 class='text-center'>$lugar</h2>";
+                echo "<h2 class='text-center'>$lugar</h2><br>
+                  <h1 class='text-center'>$nota/5.0</h1><br>
+                    <div class='ec-stars-wrapper text-center'>
+	                     <a href='valorar.php?lugar=$lug&nota=1&codfoto=$cod_foto' data-value='1' title='Votar con 1 estrellas'>&#9733;</a>
+	                     <a href='valorar.php?lugar=$lug&nota=2&codfoto=$cod_foto' data-value='2' title='Votar con 2 estrellas'>&#9733;</a>
+	                     <a href='valorar.php?lugar=$lug&nota=3&codfoto=$cod_foto' data-value='3' title='Votar con 3 estrellas'>&#9733;</a>
+	                     <a href='valorar.php?lugar=$lug&nota=4&codfoto=$cod_foto' data-value='4' title='Votar con 4 estrellas'>&#9733;</a>
+	                     <a href='valorar.php?lugar=$lug&nota=5&codfoto=$cod_foto' data-value='5' title='Votar con 5 estrellas'>&#9733;</a>
+                    </div>";
                 echo "</div>";
                 echo "<div class='col-md-3'>";
                 echo "</div>";
@@ -183,3 +225,6 @@
     </div>
   </body>
 </html>
+<?php
+ob_end_flush();
+?>

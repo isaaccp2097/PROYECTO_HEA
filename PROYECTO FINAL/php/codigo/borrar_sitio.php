@@ -66,6 +66,9 @@
             if ($result = $connection->query($c1)) {
               header("Location: mis_sitios.php");
             }
+            else {
+              echo "no se borra";
+            }
         }
 
 
