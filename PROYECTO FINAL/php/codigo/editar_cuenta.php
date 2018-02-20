@@ -15,11 +15,12 @@
  <body>
     <div class="container-fluid">
       <?php   /*if (isset($_SESSION["user"])&&($_SESSION["user"])=='administrador' ): */?>
-      <?php if (isset($_SESSION["user"])&&($_SESSION["user"])=='administrador' ) {
-                include("../funciones/admin/cabecera_admin.php");
+        <?php if (isset($_SESSION["user"])&&($_SESSION["tipo"])=='administrador' ) {
+                  include("../funciones/admin/cabecera_admin.php");
+                } else {
+                  include("../funciones/usuario/cabecera.php");
               }
-
-      ?>
+        ?>
 
 
         <?php if (isset($_SESSION["user"])){

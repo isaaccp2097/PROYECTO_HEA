@@ -1,4 +1,7 @@
 <?php
+ob_start();
+?>
+<?php
  session_start();
 ?>
 <!DOCTYPE html>
@@ -128,7 +131,7 @@
         $query="update usuarios set nusu='$nusu1',nombre='$nombre1',
         apellidos='$apellidos1',email='$email1',fecha='$fecha1',tipo='$tipo1'
         WHERE cod_usu=$cod_usu1";
-    
+
 
         if ($result = $connection->query($query)) {
           header("Location: edita_usuarios.php");
@@ -142,3 +145,6 @@
 
   </body>
 </html>
+<?php
+ob_end_flush();
+?>
