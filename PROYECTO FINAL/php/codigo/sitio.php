@@ -42,7 +42,7 @@
           <label>Descripción: </label>
           <input name="descripcion" type="varchar" class="form-control">
           <label>Foto: </label>
-          <input name="foto" type="file" class="form-control">
+          <input name="image" type="file" class="form-control">
         </div>
         <button type="submit" class="btn btn-primary">AÑADIR</button>
       </form>
@@ -69,7 +69,7 @@
           $provincia=$_POST['provincia'];
           $latitud=$_POST['latitud'];
           $longitud=$_POST['longitud'];
-          $foto=$_POST['foto'];
+          $foto=$_POST['image'];
           $descripcion=$_POST['descripcion'];
           $cod_usu=$_SESSION['codusu'];
 
@@ -80,15 +80,39 @@
 
           }
           $codsitio=$connection->insert_id;
-          $c2="insert into fotos (cod_foto, cod_sitio, foto)
+
+
+
+          if (isset($_POST["ciudad"])) {
+
+          $msg = "";
+          $target = "../../img/usuario/sitios".basename($_FILES['image']['name']);
+
+          $db = mysqli_connect("localhost", "root", "Admin2015", "hea", 3316);
+
+          $image = $_FILES['image']['name'];
+
+          $sql = "insert into fotos (cod_foto, cod_sitio, foto)
           values
-          (NULL,'$codsitio','../../img/usuario/sitios/$foto')";
-          if ($result = $connection->query($c2)) {
-            header("Location: mis_sitios.php");
+          (NULL,'$codsitio','../../img/usuario/sitios/$image')";
+
+          mysqli_query($db, $sql);
+
+          if (move_uploaded_file($_FILES['image']['tmp_name'],$target)) {
+            $msg ="imagen enviada";
           }
+          else {
+            $msg  = "ha habido un problema";
+          }
+
+
+        }
+
+
 
       }
     ?>
+
 
     <?php else: ?>
       <h1>NO TIENES PERMISOS PARA ACCEDER AQUI</h1>

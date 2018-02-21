@@ -51,7 +51,7 @@
                 if($obj = $result->fetch_object()) {
 
                 $nota=$obj->nota;
-                $cod_foto=$obj->cod_foto;
+                //$cod_foto=$obj->cod_foto;
               }
               }
             }
