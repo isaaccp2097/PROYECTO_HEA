@@ -75,7 +75,7 @@ ob_start();
               <div class='col-md-2'>
                 <form action='mis_sitios.php' method='post'>
                   <div class='form-group'>
-                    <a href='sitio.php'><img id='boton_accion' src='../../img/administrador/anadir.png'></a>
+                    <a href='sitio.php?'><img id='boton_accion' src='../../img/administrador/anadir.png'></a>
               </div>
               <div class='col-md-4'>
               </div>

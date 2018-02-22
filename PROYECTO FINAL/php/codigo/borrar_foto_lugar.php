@@ -45,38 +45,76 @@
             }
 
       ?>
-      <form method="post">
-        <label>Elige la nueva Foto: </label>
-        <input name='nueva_f' type='file' class='form-control'>
+      <form  method="post" enctype="multipart/form-data">
+        <label>Nombre foto: </label>
+        <input class="form-control" type="text" name="name" required placeholder="Inserta el nombre de la foto" />
+        <label>Elige una nueva foto: </label>
+        <input name="image" type="file" class="form-control">
         <button type="submit" class="btn btn-primary">AÑADIR</button>
       </form>
       <!-- todos los sitios del usuario-->
       <?php
 
+      if (isset($_POST["name"])) {
+
+      //NUEVO CODIGO DE INSERCION DE fotos
+      //Temp file. Where the uploaded file is stored temporary
+      $tmp_file = $_FILES['image']['tmp_name'];
+
+      //Dir where we are going to store the file
+      $target_dir = "../../img/usuario/sitios/";
+
+      //Full name of the file.
+      $target_file = strtolower($target_dir . basename($_FILES['image']['name']));
+
+      //Can we upload the file
+      $valid= true;
 
 
-          if (isset($_POST["nueva_f"])) {
+      //Check if the file already exists
+      if (file_exists($target_file)) {
+        echo "Sorry, file already exists.";
+        $valid = false;
+      }
+
+      //Check the size of the file. Up to 2Mb
+      if ($_FILES['image']['size'] > (2048000)) {
+        $valid = false;
+        echo 'Oops!  Your file\'s size is to large.';
+      }
+
+      //Check the file extension: We need an image not any other different type of file
+      $file_extension = pathinfo($target_file, PATHINFO_EXTENSION); // We get the entension
+      if ($file_extension!="jpg" && $file_extension!="jpeg" && $file_extension!="png" && $file_extension!="gif") {
+        $valid = false;
+        echo "Only JPG, JPEG, PNG & GIF files are allowed";
+      }
 
 
-            $connection = new mysqli("localhost", "root", "Admin2015", "hea", 3316);
+      if ($valid) {
+
+        //var_dump($target_file);
+        //Put the file in its place
+        move_uploaded_file($tmp_file, $target_file);
+
+      //  echo "PRODUCT ADDED";
+
+        $connection = new mysqli("localhost", "root", "Admin2015", "hea", 3316);
 
 
-            if ($connection->connect_errno) {
-                printf("Connection failed: %s\n", $connection->connect_error);
-                exit();
-            }
-            $codusu=$_SESSION["codusu"];
-            $f=$_GET['foto'];
-            $nueva_f=$_POST['nueva_f'];
-            $lugar=$_GET['lugar'];
-
-            $c1="update fotos set foto='../../img/usuario/sitios/$nueva_f' WHERE foto='$f'";
-            if ($result = $connection->query($c1)) {
-              header("Location: mod_lugar.php?lugar=$lugar");
-            }
+        if ($connection->connect_errno) {
+            printf("Connection failed: %s\n", $connection->connect_error);
+            exit();
         }
 
+        $f=$_GET['foto'];
+        $query="update fotos set foto='$target_file' WHERE foto='$f'";
+        if ($result = $connection->query($query)) {
+          header("Location: mis_sitios.php");
+        }
+      }
 
+}
       ?>
 
       <?php else: ?>

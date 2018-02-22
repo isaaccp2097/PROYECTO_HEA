@@ -1,4 +1,7 @@
- <?php
+<?php
+ob_start();
+?>
+<?php
   session_start();
 ?>
 <!DOCTYPE html>
@@ -89,7 +92,7 @@
            values
            ('$nusu',NULL,md5('$contrasena'),'$nombre','$apellidos','$email','$fecha','usuario')";
            if ($result = $connection->query($consulta)) {
-
+             header("Location: login.php");
            } else {
              echo "<div id='error'>El campo 'Nombre de usuario' está repetido</div>";
            }
@@ -99,3 +102,6 @@
      ?>
   </body>
 </html>
+<?php
+ob_end_flush();
+?>

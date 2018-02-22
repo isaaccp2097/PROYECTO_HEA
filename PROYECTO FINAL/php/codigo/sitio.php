@@ -14,7 +14,7 @@
 </head>
  <body>
     <div class="container-fluid">
-      <?php if (isset($_SESSION["user"]))  :?>
+
 
 
       <?php if (isset($_SESSION["user"])&&($_SESSION["user"])=='administrador' ) {
@@ -23,11 +23,12 @@
                 include("../funciones/usuario/cabecera.php");
             }
       ?>
+
       <div class="row">
         <div class="col-md-3">
         </div>
         <div class="col-md-6">
-      <form  action="sitio.php" method="post">
+      <form  method="post" enctype="multipart/form-data">
         <div class="form-group">
           <label>Ciudad: </label>
           <input name="ciudad" type="text" class="form-control" required>
@@ -41,6 +42,8 @@
           <input name="longitud" type="varchar" class="form-control">
           <label>Descripción: </label>
           <input name="descripcion" type="varchar" class="form-control">
+          <label>Nombre foto: </label>
+          <input class="form-control" type="text" name="name" required placeholder="Inserta el nombre de la foto" />
           <label>Foto: </label>
           <input name="image" type="file" class="form-control">
         </div>
@@ -69,55 +72,81 @@
           $provincia=$_POST['provincia'];
           $latitud=$_POST['latitud'];
           $longitud=$_POST['longitud'];
-          $foto=$_POST['image'];
           $descripcion=$_POST['descripcion'];
           $cod_usu=$_SESSION['codusu'];
 
           $c1="insert into sitios (cod_usu,ciudad,pais,provincia,latitud,longitud,descripcion)
           values
           ('$cod_usu','$ciudad','$pais','$provincia','$latitud','$longitud','$descripcion')";
+
           if ($result = $connection->query($c1)) {
+            $codsitio=$connection->insert_id;
+
+
+            //NUEVO CODIGO DE INSERCION DE fotos
+            //Temp file. Where the uploaded file is stored temporary
+            $tmp_file = $_FILES['image']['tmp_name'];
+
+            //Dir where we are going to store the file
+            $target_dir = "../../img/usuario/sitios/";
+
+            //Full name of the file.
+            $target_file = strtolower($target_dir . basename($_FILES['image']['name']));
+
+            //Can we upload the file
+            $valid= true;
+
+
+            //Check if the file already exists
+            if (file_exists($target_file)) {
+              echo "Sorry, file already exists.";
+              $valid = false;
+            }
+
+            //Check the size of the file. Up to 2Mb
+            if ($_FILES['image']['size'] > (2048000)) {
+              $valid = false;
+              echo 'Oops!  Your file\'s size is to large.';
+            }
+
+            //Check the file extension: We need an image not any other different type of file
+            $file_extension = pathinfo($target_file, PATHINFO_EXTENSION); // We get the entension
+            if ($file_extension!="jpg" && $file_extension!="jpeg" && $file_extension!="png" && $file_extension!="gif") {
+              $valid = false;
+              echo "Only JPG, JPEG, PNG & GIF files are allowed";
+            }
+
+
+            if ($valid) {
+
+              //var_dump($target_file);
+              //Put the file in its place
+              move_uploaded_file($tmp_file, $target_file);
+
+              //echo "PRODUCT ADDED";
+
+              $connection = new mysqli("localhost", "root", "Admin2015", "hea", 3316);
+
+
+              if ($connection->connect_errno) {
+                  printf("Connection failed: %s\n", $connection->connect_error);
+                  exit();
+              }
+
+
+              $query="insert into fotos (cod_foto, cod_sitio, foto)
+              values
+              (NULL,'$codsitio','$target_file')";
+
+              if ($result = $connection->query($query)) {
+                  header("Location: mis_sitios.php");
+              }
+            }
+
 
           }
-          $codsitio=$connection->insert_id;
-
-
-
-          if (isset($_POST["ciudad"])) {
-
-          $msg = "";
-          $target = "../../img/usuario/sitios".basename($_FILES['image']['name']);
-
-          $db = mysqli_connect("localhost", "root", "Admin2015", "hea", 3316);
-
-          $image = $_FILES['image']['name'];
-
-          $sql = "insert into fotos (cod_foto, cod_sitio, foto)
-          values
-          (NULL,'$codsitio','../../img/usuario/sitios/$image')";
-
-          mysqli_query($db, $sql);
-
-          if (move_uploaded_file($_FILES['image']['tmp_name'],$target)) {
-            $msg ="imagen enviada";
-          }
-          else {
-            $msg  = "ha habido un problema";
-          }
-
-
         }
 
-
-
-      }
     ?>
-
-
-    <?php else: ?>
-      <h1>NO TIENES PERMISOS PARA ACCEDER AQUI</h1>
-
-
-    <?php endif ?>
  </body>
 </html>
