@@ -125,6 +125,21 @@ ob_start();
 
 
       ?>
+      <script>
+      function initMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+    </script>
       <h1 class='text-center' id="color_negro"> COMENTARIOS </h1>
       <div class="row">
         <div class="col-md-3">
@@ -216,7 +231,7 @@ ob_start();
             $consulta="insert into comentarios (cod_comentario,comentario,cod_usu,cod_sitio)
             values (NULL,'$u dice: $com','$cu','$lug')";
             if ($result = $connection->query($consulta)) {
-              header("Location: lugar.php?lugar=$lug");
+              header("Location: mod_lugar.php?lugar=$lug");
 
             }
         }

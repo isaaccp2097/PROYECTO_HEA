@@ -11,9 +11,16 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/estilos.css" media="screen" title="no title">
+    <style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
 </head>
   <body>
      <div class="container-fluid">
+
       <?php if (isset($_SESSION["user"])&&($_SESSION["user"])=='administrador' ) {
                 include("../funciones/admin/cabecera_admin.php");
               } else{
@@ -26,7 +33,25 @@
         <div class="col-md-3">
         </div>
         <div class="col-md-6 mt-2 img-thumbnail" >
-          <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d6360057.857436926!2d-4.2827772923841545!3d38.889748591177806!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2ses!4v1517313753095" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+          <!-- <iframe src="https://www.google.es/maps/@38.4525389,-5.1831264,7z" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>-->
+          <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d6360057.857436926!2d-4.2827772923841545!3d38.889748591177806!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2ses!4v1517313753095" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>-->
+          <h3>My Google Maps Demo</h3>
+       <div id="map"></div>
+       <script>
+         function initMap() {
+           var uluru = {lat: -25.363, lng: 131.044};
+           var map = new google.maps.Map(document.getElementById('map'), {
+             zoom: 4,
+             center: uluru
+           });
+           var marker = new google.maps.Marker({
+             position: uluru,
+             map: map
+           });
+         }
+       </script>
+       <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+       </script>
         </div>
         <div class="col-md-3">
         </div>
