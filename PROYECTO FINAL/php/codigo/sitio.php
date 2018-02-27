@@ -83,34 +83,33 @@
             $codsitio=$connection->insert_id;
 
 
-            //NUEVO CODIGO DE INSERCION DE fotos
-            //Temp file. Where the uploaded file is stored temporary
+
             $tmp_file = $_FILES['image']['tmp_name'];
 
-            //Dir where we are going to store the file
+
             $target_dir = "../../img/usuario/sitios/";
 
-            //Full name of the file.
+
             $target_file = strtolower($target_dir . basename($_FILES['image']['name']));
 
-            //Can we upload the file
+
             $valid= true;
 
 
-            //Check if the file already exists
+
             if (file_exists($target_file)) {
               echo "Sorry, file already exists.";
               $valid = false;
             }
 
-            //Check the size of the file. Up to 2Mb
+
             if ($_FILES['image']['size'] > (2048000)) {
               $valid = false;
               echo 'Oops!  Your file\'s size is to large.';
             }
 
-            //Check the file extension: We need an image not any other different type of file
-            $file_extension = pathinfo($target_file, PATHINFO_EXTENSION); // We get the entension
+
+            $file_extension = pathinfo($target_file, PATHINFO_EXTENSION);
             if ($file_extension!="jpg" && $file_extension!="jpeg" && $file_extension!="png" && $file_extension!="gif") {
               $valid = false;
               echo "Only JPG, JPEG, PNG & GIF files are allowed";
@@ -119,11 +118,10 @@
 
             if ($valid) {
 
-              //var_dump($target_file);
-              //Put the file in its place
+
               move_uploaded_file($tmp_file, $target_file);
 
-              //echo "PRODUCT ADDED";
+            
 
               $connection = new mysqli("localhost", "root", "Admin2015", "hea", 3316);
 

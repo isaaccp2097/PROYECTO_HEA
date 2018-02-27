@@ -31,20 +31,17 @@
         <?php
           if (isset($_GET["lugar"])) {
 
-        //$cod_usu1 = $_POST["cod_usu"];
 
-        //CREATING THE CONNECTION
         $connection = new mysqli("localhost", "root", "Admin2015", "hea",3316);
         $connection->set_charset("uft8");
 
-        //TESTING IF THE CONNECTION WAS RIGHT
+
         if ($connection->connect_errno) {
             printf("Connection failed: %s\n", $connection->connect_error);
             exit();
         }
 
-        //MAKING A SELECT QUERY
-        /* Consultas de selección que devuelven un conjunto de resultados */
+
         $lug=$_GET['lugar'];
         $query="select * from sitios where cod_sitio=$lug";
 
@@ -76,20 +73,17 @@
 <?php
   if (isset($_POST["desc"])) {
 
-//$cod_usu1 = $_POST["cod_usu"];
 
-//CREATING THE CONNECTION
 $connection = new mysqli("localhost", "root", "Admin2015", "hea",3316);
 $connection->set_charset("uft8");
 
-//TESTING IF THE CONNECTION WAS RIGHT
+
 if ($connection->connect_errno) {
     printf("Connection failed: %s\n", $connection->connect_error);
     exit();
 }
 
-//MAKING A SELECT QUERY
-/* Consultas de selección que devuelven un conjunto de resultados */
+
 $desc=$_POST['desc'];
 $cod_c=$_GET['lugar'];
 $query="update sitios set descripcion='$desc' where cod_sitio=$cod_c";

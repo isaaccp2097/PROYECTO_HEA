@@ -47,7 +47,7 @@
       ?>
 
 
-      <!-- todos los sitios del usuario-->
+  
       <?php
 
 

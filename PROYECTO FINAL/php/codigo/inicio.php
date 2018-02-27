@@ -24,7 +24,7 @@
 
       <div class="row">
         <div class="col-md-12" id="divportada" class="ml-5" >
-          <img id="portada" src="../../img/portada.png" class="img-fluid" alt="Responsive image" >
+          <img id="portada" src="../../img/administrador/fondo1.jpg" class="img-fluid" alt="Responsive image" >
         </div>
       </div>
     </div>

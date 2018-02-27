@@ -1,4 +1,7 @@
 <?php
+ob_start();
+?>
+<?php
  session_start();
 ?>
 <!DOCTYPE html>
@@ -49,17 +52,17 @@
 
         <?php if (isset($_SESSION["user"])){
 
-          //Creacion de la conexion
+
           $connection = new mysqli("localhost", "root", "Admin2015", "hea",3316);
           $connection->set_charset("uft8");
 
-          //Probando que la conexion es correcta
+
           if ($connection->connect_errno) {
               printf("La conexión falló: %s\n", $connection->connect_error);
               exit();
           }
 
-          //CONSULTA PARA CONSEGUIR DATOS DE LOS USUARIOS
+
           $consulta="SELECT * from usuarios where nusu='".$_SESSION["user"]."'";
 
           if ($result = $connection->query($consulta))  {
@@ -78,6 +81,7 @@
             $fecha = $obj->fecha;
             $tipo = $obj->tipo;
             $cod_usu= $obj->cod_usu;
+            $contrasena=$obj->contrasena;
 
           } else {
             echo "No se han recuperar los datos cliente";
@@ -111,6 +115,7 @@
               <label>Fecha de nacimiento: </label>
               <input name="fecha" type="date" class="form-control" placeholder="Edad" value='<?php echo $fecha; ?>'>
             </div>
+
             <div class="form-group">
 
               <input name="tipo" type="hidden" class="form-control" placeholder="tipo" value='<?php echo $tipo; ?>'>
@@ -137,23 +142,23 @@
         $fecha1 = $_POST["fecha"];
         $tipo1 = $_POST["tipo"];
         $cod_usu1 = $_POST["cod_usu"];
+        $contrasena1= $_POST["contrasena"];
 
-        //CREATING THE CONNECTION
+
         $connection = new mysqli("localhost", "root", "Admin2015", "hea",3316);
         $connection->set_charset("uft8");
 
-        //TESTING IF THE CONNECTION WAS RIGHT
+
         if ($connection->connect_errno) {
             printf("Connection failed: %s\n", $connection->connect_error);
             exit();
         }
 
-        //MAKING A SELECT QUERY
-        /* Consultas de selección que devuelven un conjunto de resultados */
+
         $query="update usuarios set nusu='$nusu1',nombre='$nombre1',
         apellidos='$apellidos1',email='$email1',fecha='$fecha1',tipo='$tipo1'
         WHERE cod_usu=$cod_usu1";
-
+        echo "$query";
 
         if ($result = $connection->query($query)) {
           $_SESSION["user"]=$_POST["nusu"];
@@ -182,3 +187,6 @@
 
   </body>
 </html>
+<?php
+ob_end_flush();
+?>

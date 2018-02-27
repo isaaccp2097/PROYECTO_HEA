@@ -35,20 +35,15 @@
         <?php
           if (isset($_GET["com"])) {
 
-        //$cod_usu1 = $_POST["cod_usu"];
 
-        //CREATING THE CONNECTION
         $connection = new mysqli("localhost", "root", "Admin2015", "hea",3316);
         $connection->set_charset("uft8");
 
-        //TESTING IF THE CONNECTION WAS RIGHT
         if ($connection->connect_errno) {
             printf("Connection failed: %s\n", $connection->connect_error);
             exit();
         }
 
-        //MAKING A SELECT QUERY
-        /* Consultas de selección que devuelven un conjunto de resultados */
         $comentario=$_GET['com'];
         $query="select * from comentarios where cod_comentario=$comentario";
 
@@ -78,18 +73,15 @@
 
 
 
-//CREATING THE CONNECTION
 $connection = new mysqli("localhost", "root", "Admin2015", "hea",3316);
 $connection->set_charset("uft8");
 
-//TESTING IF THE CONNECTION WAS RIGHT
 if ($connection->connect_errno) {
     printf("Connection failed: %s\n", $connection->connect_error);
     exit();
 }
 
-//MAKING A SELECT QUERY
-/* Consultas de selección que devuelven un conjunto de resultados */
+
 $comentario1=$_POST['comentario1'];
 $cod_c=$_GET['com'];
 $query="update comentarios set comentario='$comentario1' where cod_comentario=$cod_c";

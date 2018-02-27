@@ -106,12 +106,15 @@ ob_start();
 
                         echo "<div class='mt-3 col-md-4'>
                         <a href='mod_lugar.php?lugar=$cod_lugar'><img id='fotos' class='img-thumbnail' src='$foto'></a><a href='borrar_sitio.php?cod_lugar=$cod_lugar&foto=$foto'><img id='boton_accion' src='../../img/administrador/borrar.svg'></a>
-                        $lugar
+                        <b>$lugar</b>
                         </div>";
 
 
 
               }
+              $result->close();
+              unset($obj);
+              unset($connection);
               echo "</div>";
               }
             }

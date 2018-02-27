@@ -1,6 +1,7 @@
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
   <a class="navbar-brand" href="inicio.php">
-    <img src="../../img/prueba1.png" width="200" height="75" class="d-inline-block align-top img-rounded" alt="">
+    <h1> He estado Aquí</h1>
+    
 
 
     <?php

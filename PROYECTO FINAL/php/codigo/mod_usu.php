@@ -19,7 +19,7 @@ ob_start();
     <div class="container-fluid">
       <?php if (isset($_SESSION["user"])&&($_SESSION["user"])=='administrador' )  :?>
 
-      
+
 
 
       <?php if (isset($_SESSION["user"])&&($_SESSION["user"])=='administrador' ) {
@@ -31,17 +31,17 @@ ob_start();
 
         <?php if (isset($_GET["nusu"])){
 
-          //Creacion de la conexion
+
           $connection = new mysqli("localhost", "root", "Admin2015", "hea",3316);
           $connection->set_charset("uft8");
 
-          //Probando que la conexion es correcta
+
           if ($connection->connect_errno) {
               printf("La conexión falló: %s\n", $connection->connect_error);
               exit();
           }
 
-          //CONSULTA PARA CONSEGUIR DATOS DE LOS USUARIOS
+
           $consulta="SELECT * from usuarios where nusu='".$_GET["nusu"]."'";
 
           if ($result = $connection->query($consulta))  {
@@ -73,9 +73,9 @@ ob_start();
           </div>
           <div class="col-md-6">
             <form method="post">
-              <div class="form-group">
-                <div class="form-group">
-                <label>Nombre de usuario: </label>
+            <div class="form-group">
+            <div class="form-group">
+              <label>Nombre de usuario: </label>
               <input name="nusu" required type="text" class="form-control" aria-describedby="emailHelp" value='<?php echo $nusu; ?>'>
               <small class="form-text ">Debe ser único, en caso de estar repetido se repetira el formulario</small>
             </div>
@@ -120,18 +120,17 @@ ob_start();
         $tipo1 = $_POST["tipo"];
         $cod_usu1 = $_POST["cod_usu"];
 
-        //CREATING THE CONNECTION
+
         $connection = new mysqli("localhost", "root", "Admin2015", "hea",3316);
         $connection->set_charset("uft8");
 
-        //TESTING IF THE CONNECTION WAS RIGHT
+
         if ($connection->connect_errno) {
             printf("Connection failed: %s\n", $connection->connect_error);
             exit();
         }
 
-        //MAKING A SELECT QUERY
-        /* Consultas de selección que devuelven un conjunto de resultados */
+
         $query="update usuarios set nusu='$nusu1',nombre='$nombre1',
         apellidos='$apellidos1',email='$email1',fecha='$fecha1',tipo='$tipo1'
         WHERE cod_usu=$cod_usu1";

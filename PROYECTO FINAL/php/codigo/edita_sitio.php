@@ -73,6 +73,9 @@
                 echo "</div>";
                 echo "</div>";
               }
+              $result->close();
+              unset($obj);
+              unset($connection);
               }
             }
         }
@@ -124,6 +127,9 @@
                 echo "</div>";
                 echo "</div>";
               }
+              $result->close();
+              unset($obj);
+              unset($connection);
             }
             }
         }

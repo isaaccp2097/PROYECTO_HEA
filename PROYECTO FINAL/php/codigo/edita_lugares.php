@@ -79,6 +79,9 @@
                 echo "</div>";
                 echo "</div>";
               }
+              $result->close();
+              unset($obj);
+              unset($connection);
               }
             }
         }
@@ -133,7 +136,7 @@
 
 
         ?>
-        
+
         <?php else: ?>
           <h1>NO TIENES PERMISOS PARA ACCEDER AQUI</h1>
 

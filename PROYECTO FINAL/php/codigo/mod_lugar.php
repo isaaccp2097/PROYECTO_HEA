@@ -54,7 +54,7 @@ ob_start();
                 if($obj = $result->fetch_object()) {
 
                 $nota=$obj->nota;
-                //$cod_foto=$obj->cod_foto;
+              
               }
               }
             }
@@ -125,21 +125,8 @@ ob_start();
 
 
       ?>
-      <script>
-      function initMap() {
-        var uluru = {lat: -25.363, lng: 131.044};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: uluru
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
-      }
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
-    </script>
+
+
       <h1 class='text-center' id="color_negro"> COMENTARIOS </h1>
       <div class="row">
         <div class="col-md-3">
